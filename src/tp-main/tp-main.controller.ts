@@ -25,7 +25,7 @@ export class TpMainController {
     console.log('Borrar cafe con id: ${id}');
     return {
       id: id,
-      name: 'Cafe ${id}',
+      name: `Cafe ${id}`,
       description: 'Descripcion del Cafe ${id}',
     };
   }
