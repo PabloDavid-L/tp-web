@@ -29,6 +29,11 @@ export class CafeController {
     }
     return cafe;
   }
+  @Get('subclase/:description')
+  findEnSubClase(@Param('description') description: string): Cafe[] {
+    console.log(`Cafes con descripcion: ${description}`);
+    return this.cafeService.getCafeEnSubClase(description);
+  }
   @Post()
   create(@Body() createCafeDto: CreateCafeDto): Cafe {
     console.log('Crear un nuevo cafe');
