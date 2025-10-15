@@ -7,18 +7,20 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { CreateCafeDto } from './dto/create-cafe-dto';
 import { UpdateCafeDto } from './dto/update-cafe-dto';
 import type { Cafe } from './cafe.interface';
+import { QueryCafeDto } from './dto/query-cafe-dto';
 
 @Controller('cafe')
 export class CafeController {
   constructor(private readonly cafeService: CafeService) {}
   @Get()
-  findAll(): Cafe[] {
+  findAll(@Query() query: QueryCafeDto): Cafe[] {
     console.log('Obtener tipos de Cafe');
-    return this.cafeService.getCafes();
+    return this.cafeService.getCafes(query);
   }
   @Get(':id')
   findOne(@Param('id') id: number): Cafe {
