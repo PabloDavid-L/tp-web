@@ -1,5 +1,5 @@
 export class QueryCafeDto {
-  description: string;
+  tipo: string;
   sortBy: string;
   orderBy: string;
   page: number;

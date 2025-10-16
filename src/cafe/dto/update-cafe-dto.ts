@@ -1,4 +1,4 @@
 export class UpdateCafeDto {
   name: string;
-  description: string;
+  tipo: string;
 }

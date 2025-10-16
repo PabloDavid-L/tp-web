@@ -8,21 +8,21 @@ import { Cafe } from './cafe.interface';
 export class CafeService {
   nextId = 9;
   cafes = [
-    { id: 1, name: 'Cafe 1', description: 'granos' },
-    { id: 2, name: 'Cafe 2', description: 'molido' },
-    { id: 3, name: 'Cafe 3', description: 'instantaneo' },
-    { id: 4, name: 'Cafe 4', description: 'saquitos' },
-    { id: 5, name: 'Cafe 5', description: 'saquitos' },
-    { id: 6, name: 'Cafe 6', description: 'granos' },
-    { id: 7, name: 'Cafe 7', description: 'molido' },
-    { id: 8, name: 'Cafe 8', description: 'instantaneo' },
+    { id: 1, name: 'Cafe 1', tipo: 'granos' },
+    { id: 2, name: 'Cafe 2', tipo: 'molido' },
+    { id: 3, name: 'Cafe 3', tipo: 'instantaneo' },
+    { id: 4, name: 'Cafe 4', tipo: 'saquitos' },
+    { id: 5, name: 'Cafe 5', tipo: 'saquitos' },
+    { id: 6, name: 'Cafe 6', tipo: 'granos' },
+    { id: 7, name: 'Cafe 7', tipo: 'molido' },
+    { id: 8, name: 'Cafe 8', tipo: 'instantaneo' },
   ];
   getCafes(query: QueryCafeDto): Cafe[] {
     console.log('Query recibido:', query);
     const cafesToReturn = this.cafes.filter((cafe) => {
       if (
-        query.description &&
-        cafe.description.toLowerCase() !== query.description.toLowerCase()
+        query.tipo &&
+        cafe.tipo.toLowerCase() !== query.tipo.toLowerCase()
       ) {
         return false;
       }
@@ -43,14 +43,14 @@ export class CafeService {
     // throw new Error('Cafe not found');
     //}
   }
-  getCafeEnSubClase(description: string) {
-    return this.cafes.filter((cafe) => cafe.description === description);
+  getCafeEnSubClase(tipo: string) {
+    return this.cafes.filter((cafe) => cafe.tipo === tipo);
   }
   createCafe(createCafeDto: CreateCafeDto) {
     const newCafe = {
       id: this.nextId,
       name: createCafeDto.name,
-      description: createCafeDto.description,
+      tipo: createCafeDto.tipo,
     };
     this.cafes.push(newCafe);
     this.nextId++;
@@ -65,7 +65,7 @@ export class CafeService {
     this.cafes[cafeIndex] = {
       id: Number(id),
       name: updateCafeDto.name,
-      description: updateCafeDto.description,
+      tipo: updateCafeDto.tipo,
     };
     return this.cafes[cafeIndex];
   }
