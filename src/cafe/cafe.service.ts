@@ -28,6 +28,13 @@ export class CafeService {
       }
       return true;
     });
+    const cafePaginated = cafesToReturn.slice(
+      (query.page - 1) * query.limit,
+      query.page * query.limit,
+    );
+    if (query.page && query.limit) {
+      return cafePaginated;
+    }
     return cafesToReturn;
   }
   getCafeById(id: number) {
